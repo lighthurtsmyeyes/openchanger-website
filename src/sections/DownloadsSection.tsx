@@ -49,7 +49,7 @@ export default function DownloadsSection() {
             Рекомендуется для большинства пользователей. Последняя проверенная и стабильная сборка.
           </p>
           <button
-            onClick={() => window.open("https://github.com/", "_blank")}
+            onClick={() => window.open("https://github.com/lighthurtsmyeyes/openchanger-website/releases/download/Release/OpenChanger-x64-Windows.zip", "_blank")}
             className="w-full py-3 bg-[#7B3FF2] text-white rounded-lg font-semibold hover:bg-[#5B2BC2] transition-all duration-300 transform hover:scale-105 shadow-lg shadow-[#7B3FF2]/20 flex items-center justify-center gap-2 cursor-pointer mt-auto"
           >
             <Download className="w-4 h-4" />
@@ -70,7 +70,7 @@ export default function DownloadsSection() {
             Свежие функции и улучшения, но возможны баги. Для тех, кто хочет попробовать новое первым.
           </p>
           <button
-            onClick={() => window.open("https://github.com/", "_blank")}
+            onClick={() => window.open("https://github.com/lighthurtsmyeyes/openchanger-website/releases/download/Beta/OpenChanger-Beta-x64-Windows.zip", "_blank")}
             className="w-full py-3 border border-white/20 text-white rounded-lg font-semibold hover:bg-white/10 transition-all duration-300 transform hover:scale-105 flex items-center justify-center gap-2 cursor-pointer mt-auto"
           >
             <Download className="w-4 h-4" />
