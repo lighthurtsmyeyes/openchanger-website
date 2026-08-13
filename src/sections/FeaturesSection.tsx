@@ -53,16 +53,16 @@ export default function FeaturesSection() {
             </div>
           </Reveal>
 
-          {/* Speed */}
+          {/* Simplicity */}
           <Reveal className="lg:col-span-2" delay={100}>
             <div onMouseMove={spotlight} className="spotlight-card rounded-2xl p-7 md:p-9 h-full flex flex-col">
               <div className="flex items-center justify-center w-11 h-11 rounded-xl bg-gradient-to-br from-amber-500/25 to-orange-600/15 border border-amber-400/25 mb-6">
                 <Zap className="w-5 h-5 text-amber-300" />
               </div>
-              <span className="font-display font-800 text-5xl md:text-6xl text-gradient leading-none">0.4с</span>
-              <h3 className="font-display font-700 text-lg text-white mt-5 mb-2">Мгновенно</h3>
+              <span className="font-display font-800 text-5xl md:text-6xl text-gradient leading-none">Легко</span>
+              <h3 className="font-display font-700 text-lg text-white mt-5 mb-2">Простой процесс</h3>
               <p className="text-white/45 text-sm leading-relaxed">
-                Скин применяется за доли секунды. Перезапускать игру не нужно.
+                Выбери скин, примени его и перезапусти игру — всё интуитивно понятно.
               </p>
             </div>
           </Reveal>

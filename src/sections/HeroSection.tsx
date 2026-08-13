@@ -53,7 +53,7 @@ export default function HeroSection() {
 
           <p className="hero-anim mt-7 text-base md:text-lg text-white/50 max-w-xl mx-auto lg:mx-0 leading-relaxed font-light" style={{ animationDelay: "340ms" }}>
             OpenChanger — бесплатный скин-чейнджер для Dota 2 с открытым исходным кодом.
-            Больше тысячи скинов, аркан и имморталок — в два клика, без танцев с бубном.
+            Больше тысячи скинов, аркан и имморталок — выбирай что по душе.
           </p>
 
           <div className="hero-anim flex flex-wrap gap-4 mt-10 justify-center lg:justify-start" style={{ animationDelay: "480ms" }}>
@@ -90,18 +90,18 @@ export default function HeroSection() {
             <MockApp />
 
             {/* Floating chips */}
-            <div className="absolute -left-4 md:-left-10 top-10 glass rounded-xl px-4 py-3 flex items-center gap-2.5 shadow-2xl" style={{ transform: "translateZ(50px)" }}>
+            <div className="absolute -left-4 md:-left-10 top-10 rounded-xl border border-white/10 bg-[#0d0817] px-4 py-3 flex items-center gap-2.5 shadow-2xl" style={{ transform: "translateZ(50px)" }}>
               <Star className="w-4 h-4 text-amber-300" />
               <div>
                 <p className="text-xs font-semibold text-white">Arcana разблокирована</p>
                 <p className="text-[10px] text-white/40 font-mono2">Manifold Paradox</p>
               </div>
             </div>
-            <div className="absolute -right-3 md:-right-8 bottom-12 glass rounded-xl px-4 py-3 flex items-center gap-2.5 shadow-2xl" style={{ transform: "translateZ(40px)" }}>
+            <div className="absolute -right-3 md:-right-8 bottom-12 rounded-xl border border-white/10 bg-[#0d0817] px-4 py-3 flex items-center gap-2.5 shadow-2xl" style={{ transform: "translateZ(40px)" }}>
               <span className="w-2 h-2 rounded-full bg-green-400 pulse-dot" />
               <div>
-                <p className="text-xs font-semibold text-white">Применено за 0.4 сек</p>
-                <p className="text-[10px] text-white/40 font-mono2">без перезапуска игры</p>
+                <p className="text-xs font-semibold text-white">Библиотека обновлена</p>
+                <p className="text-[10px] text-white/40 font-mono2">скины к новому патчу</p>
               </div>
             </div>
           </div>
