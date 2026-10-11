@@ -4,9 +4,9 @@ import { ImageIcon, X, ChevronLeft, ChevronRight, Maximize2 } from "lucide-react
 import Reveal from "@/components/Reveal";
 
 const SHOTS = [
-  { src: "./menu.png", label: "Выбор скинов" },
-  { src: "./screenshot-2.png", label: "Сборка и патч" },
-  { src: "./screenshot-3.png", label: "Каталог по героям" },
+  { src: "./menu.png", label: "Главный экран" },
+  { src: "./screenshot-2.png", label: "Выбор скинов" },
+  { src: "./screenshot-3.png", label: "Патчинг" },
 ];
 
 function Screenshot({
