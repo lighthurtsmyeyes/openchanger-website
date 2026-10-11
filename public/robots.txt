@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://lighthurtsmyeyes.github.io/openchanger-website/sitemap.xml
