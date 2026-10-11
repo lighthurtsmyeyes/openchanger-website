@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, X, MessageCircle } from "lucide-react";
+
+const DISCORD_URL = "https://discord.gg/invite/PHWW2QDJJN";
 
 const LINKS = [
   { label: "Как работает", id: "how" },
@@ -61,6 +63,13 @@ export default function Navbar() {
         </div>
 
         <div className="hidden lg:flex items-center gap-3">
+          <button
+            onClick={() => window.open(DISCORD_URL, "_blank")}
+            className="p-2.5 rounded-full text-white/50 hover:text-white hover:bg-white/5 border border-white/10 hover:border-white/25 transition-all cursor-pointer"
+            aria-label="Discord"
+          >
+            <MessageCircle className="w-4 h-4" />
+          </button>
           <button
             onClick={() => go("download")}
             className="btn-primary px-5 py-2.5 rounded-full text-sm font-semibold cursor-pointer"
