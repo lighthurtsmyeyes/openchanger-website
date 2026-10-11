@@ -1,58 +1,42 @@
-import AuroraBackground from "@/components/AuroraBackground";
-import ParticleBackground from "@/components/ParticleBackground";
 import Navbar from "@/components/Navbar";
-import Marquee from "@/components/Marquee";
 import HeroSection from "@/sections/HeroSection";
-import FeaturesSection from "@/sections/FeaturesSection";
-import ShowcaseSection from "@/sections/ShowcaseSection";
 import HowItWorksSection from "@/sections/HowItWorksSection";
-import DownloadsSection from "@/sections/DownloadsSection";
+import ScreenshotsSection from "@/sections/ScreenshotsSection";
 import FaqSection from "@/sections/FaqSection";
-import DiscordSection from "@/sections/DiscordSection";
+import DownloadsSection from "@/sections/DownloadsSection";
 import FooterSection from "@/sections/FooterSection";
-import { Sparkle } from "lucide-react";
+import { Check } from "lucide-react";
 
-const MARQUEE_ITEMS = [
-  "1000+ скинов",
-  "бесплатно навсегда",
-  "открытый исходный код",
-  "без рекламы",
-  "обновления к каждому патчу",
-  "простой интерфейс",
-];
+const FACTS = ["Без рекламы и подписок", "Скины видны только тебе", "Обновления к каждому патчу"];
 
-function MarqueeStrip() {
+function FactsStrip() {
   return (
-    <Marquee className="relative z-10 border-y border-white/[0.06] bg-white/[0.015] py-5">
-      {MARQUEE_ITEMS.map((item) => (
-        <span key={item} className="flex items-center shrink-0">
-          <span className="font-display font-600 text-sm md:text-base uppercase tracking-[0.2em] text-white/35 px-6">
-            {item}
+    <div className="border-y border-white/[0.06] bg-white/[0.015]">
+      <div className="max-w-5xl mx-auto px-5 md:px-8 py-5 flex flex-wrap items-center justify-center gap-x-10 gap-y-3">
+        {FACTS.map((fact) => (
+          <span key={fact} className="flex items-center gap-2.5 text-sm text-white/55">
+            <Check className="w-4 h-4 text-[#9fca2b] shrink-0" />
+            {fact}
           </span>
-          <Sparkle className="w-4 h-4 text-violet-400/70 shrink-0" />
-        </span>
-      ))}
-    </Marquee>
+        ))}
+      </div>
+    </div>
   );
 }
 
 export default function Home() {
   return (
     <div className="relative min-h-screen noise">
-      <AuroraBackground />
-      <ParticleBackground />
       <Navbar />
       <main className="relative z-10">
         <HeroSection />
-        <MarqueeStrip />
-        <FeaturesSection />
-        <ShowcaseSection />
+        <FactsStrip />
         <HowItWorksSection />
-        <DownloadsSection />
+        <ScreenshotsSection />
         <FaqSection />
-        <DiscordSection />
-        <FooterSection />
+        <DownloadsSection />
       </main>
+      <FooterSection />
     </div>
   );
 }

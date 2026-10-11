@@ -1,4 +1,4 @@
-import { Search, LayoutGrid, Swords, Backpack, Settings, Sparkles, Check, Zap } from "lucide-react";
+import { Search, LayoutGrid, Swords, Backpack, Settings, Sparkles, Check } from "lucide-react";
 
 const SKINS = [
   { name: "Manifold Paradox", hero: "Phantom Assassin", rarity: "Arcana", color: "from-fuchsia-600/80 to-purple-900/80", rarityColor: "text-fuchsia-300 border-fuchsia-400/30 bg-fuchsia-500/10" },
@@ -25,10 +25,10 @@ export default function MockApp() {
         <span className="w-3 h-3 rounded-full bg-[#febc2e]" />
         <span className="w-3 h-3 rounded-full bg-[#28c840]" />
         <div className="flex items-center gap-2 ml-3">
-          <Zap className="w-3.5 h-3.5 text-violet-400" />
+          <img src="./icon-192.png" alt="" className="w-4 h-4 rounded-sm" />
           <span className="font-mono2 text-xs text-white/60">OpenChanger</span>
         </div>
-        <span className="ml-auto font-mono2 text-[10px] px-2 py-0.5 rounded-full border border-violet-400/30 bg-violet-500/10 text-violet-300">
+        <span className="ml-auto font-mono2 text-[10px] px-2 py-0.5 rounded-full border border-[#9fca2b]/30 bg-[#9fca2b]/10 text-[#c9e56b]">
           v2.1.0
         </span>
       </div>
@@ -41,7 +41,7 @@ export default function MockApp() {
               key={item.label}
               className={`flex items-center gap-2.5 px-3 py-2 rounded-lg text-xs font-medium transition-colors ${
                 item.active
-                  ? "bg-violet-500/15 text-violet-200 border border-violet-400/25"
+                  ? "bg-[#9fca2b]/15 text-[#d2ec6e] border border-[#9fca2b]/25"
                   : "text-white/40 hover:text-white/70 hover:bg-white/5 border border-transparent"
               }`}
             >
@@ -51,7 +51,7 @@ export default function MockApp() {
           ))}
           <div className="mt-auto mx-2 p-2.5 rounded-lg bg-white/[0.03] border border-white/[0.06]">
             <div className="flex items-center gap-1.5">
-              <span className="w-1.5 h-1.5 rounded-full bg-green-400 pulse-dot" />
+              <span className="w-1.5 h-1.5 rounded-full bg-[#9fca2b] pulse-dot" />
               <span className="text-[10px] text-white/50 font-mono2">Dota 2 запущена</span>
             </div>
           </div>
@@ -73,7 +73,7 @@ export default function MockApp() {
                 key={chip}
                 className={`text-[10px] px-2.5 py-1 rounded-full border font-medium ${
                   i === 0
-                    ? "bg-violet-500/20 border-violet-400/40 text-violet-200"
+                    ? "bg-[#9fca2b]/20 border-[#9fca2b]/40 text-[#d2ec6e]"
                     : "border-white/10 text-white/40"
                 }`}
               >
@@ -88,13 +88,13 @@ export default function MockApp() {
               <div
                 key={skin.name}
                 className={`mock-skin relative rounded-xl border overflow-hidden ${
-                  i === 0 ? "border-violet-400/50" : "border-white/[0.07]"
+                  i === 0 ? "border-[#9fca2b]/50" : "border-white/[0.07]"
                 } bg-white/[0.02]`}
               >
                 <div className={`aspect-[4/3] bg-gradient-to-br ${skin.color} relative flex items-center justify-center`}>
                   <Sparkles className="w-5 h-5 text-white/60" />
                   {i === 0 && (
-                    <span className="absolute top-1.5 right-1.5 flex items-center gap-1 text-[8px] font-semibold bg-violet-500 text-white px-1.5 py-0.5 rounded-full">
+                    <span className="absolute top-1.5 right-1.5 flex items-center gap-1 text-[8px] font-semibold bg-[#9fca2b] text-[#0a0f02] px-1.5 py-0.5 rounded-full">
                       <Check className="w-2 h-2" />
                       Активен
                     </span>
