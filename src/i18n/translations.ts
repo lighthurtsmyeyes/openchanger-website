@@ -27,6 +27,8 @@ export const ru = {
     ],
     scroll: "листай",
     scrollAria: "Листай вниз",
+    downloadsLabel: "скачиваний",
+    membersLabel: "в Discord",
   },
   facts: ["Без рекламы и подписок", "Скины видны только тебе", "Обновления к каждому патчу"],
   how: {
@@ -140,6 +142,8 @@ export const en: Dict = {
     ],
     scroll: "scroll",
     scrollAria: "Scroll down",
+    downloadsLabel: "downloads",
+    membersLabel: "on Discord",
   },
   facts: ["No ads or subscriptions", "Only you can see the skins", "Updated for every patch"],
   how: {

@@ -1,10 +1,19 @@
 import { Download, ChevronDown } from "lucide-react";
 import MockApp from "@/components/MockApp";
 import { useI18n } from "@/i18n";
-import { RELEASE_URL } from "@/lib/site";
+import { RELEASE_URL, DISCORD_URL } from "@/lib/site";
+import { useDownloadsCount, useDiscordMembers } from "@/hooks/use-social-proof";
 
 export default function HeroSection() {
-  const { t } = useI18n();
+  const { t, lang } = useI18n();
+  const downloads = useDownloadsCount();
+  const members = useDiscordMembers();
+
+  const fmt = (n: number) => new Intl.NumberFormat(lang === "ru" ? "ru-RU" : "en-US").format(n);
+
+  const stats: { value: string; label: string; href?: string }[] = [...t.hero.stats];
+  if (downloads !== null) stats.push({ value: fmt(downloads), label: t.hero.downloadsLabel });
+  if (members !== null) stats.push({ value: fmt(members), label: t.hero.membersLabel, href: DISCORD_URL });
 
   return (
     <section
@@ -48,17 +57,34 @@ export default function HeroSection() {
           </div>
 
           <div
-            className="hero-anim flex gap-10 mt-12 justify-center lg:justify-start"
+            className="hero-anim flex flex-wrap gap-x-10 gap-y-6 mt-12 justify-center lg:justify-start"
             style={{ animationDelay: "480ms" }}
           >
-            {t.hero.stats.map((stat) => (
-              <div key={stat.label} className="flex flex-col">
-                <span className="font-display text-2xl md:text-3xl font-800 text-white">
-                  {stat.value}
-                </span>
-                <span className="text-xs text-white/40 mt-1 font-mono2 uppercase tracking-wider">{stat.label}</span>
-              </div>
-            ))}
+            {stats.map((stat) =>
+              stat.href ? (
+                <a
+                  key={stat.label}
+                  href={stat.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex flex-col group"
+                >
+                  <span className="font-display text-2xl md:text-3xl font-800 text-white group-hover:text-[#d2ec6e] transition-colors">
+                    {stat.value}
+                  </span>
+                  <span className="text-xs text-white/40 mt-1 font-mono2 uppercase tracking-wider group-hover:text-white/70 transition-colors">
+                    {stat.label}
+                  </span>
+                </a>
+              ) : (
+                <div key={stat.label} className="flex flex-col">
+                  <span className="font-display text-2xl md:text-3xl font-800 text-white">
+                    {stat.value}
+                  </span>
+                  <span className="text-xs text-white/40 mt-1 font-mono2 uppercase tracking-wider">{stat.label}</span>
+                </div>
+              ),
+            )}
           </div>
         </div>
 
