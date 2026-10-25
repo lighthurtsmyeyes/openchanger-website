@@ -1,7 +1,7 @@
 import { Download, ChevronDown } from "lucide-react";
 import MockApp from "@/components/MockApp";
-import { scrollToId } from "@/components/Navbar";
 import { useI18n } from "@/i18n";
+import { RELEASE_URL } from "@/lib/site";
 
 export default function HeroSection() {
   const { t } = useI18n();
@@ -38,13 +38,13 @@ export default function HeroSection() {
           </p>
 
           <div className="hero-anim mt-9 flex justify-center lg:justify-start" style={{ animationDelay: "360ms" }}>
-            <button
-              onClick={() => scrollToId("download")}
-              className="btn-primary flex items-center gap-2.5 px-9 py-4 rounded-full font-semibold cursor-pointer"
+            <a
+              href={RELEASE_URL}
+              className="btn-primary flex items-center gap-2.5 px-9 py-4 rounded-full font-semibold"
             >
               <Download className="w-5 h-5" />
               {t.hero.cta}
-            </button>
+            </a>
           </div>
 
           <div
@@ -75,14 +75,14 @@ export default function HeroSection() {
       </div>
 
       {/* Scroll hint */}
-      <button
-        onClick={() => scrollToId("how")}
-        className="absolute bottom-7 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/30 hover:text-white/70 transition-colors cursor-pointer"
+      <a
+        href="#how"
+        className="absolute bottom-7 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/30 hover:text-white/70 transition-colors"
         aria-label={t.hero.scrollAria}
       >
         <span className="font-mono2 text-[10px] uppercase tracking-[0.25em]">{t.hero.scroll}</span>
         <ChevronDown className="w-5 h-5 scroll-hint-dot" />
-      </button>
+      </a>
     </section>
   );
 }

@@ -1,8 +1,7 @@
 import { useState, useEffect } from "react";
 import { Menu, X, MessageCircle } from "lucide-react";
 import { useI18n, type Lang } from "@/i18n";
-
-const DISCORD_URL = "https://discord.gg/invite/PHWW2QDJJN";
+import { RELEASE_URL, DISCORD_URL } from "@/lib/site";
 
 const LANGS: Lang[] = ["ru", "en"];
 
@@ -52,11 +51,6 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const go = (id: string) => {
-    setMobileOpen(false);
-    scrollToId(id);
-  };
-
   return (
     <nav
       className={`fixed top-0 w-full z-50 transition-all duration-500 ${
@@ -66,7 +60,7 @@ export default function Navbar() {
       }`}
     >
       <div className="max-w-6xl mx-auto px-5 md:px-8 py-4 flex justify-between items-center">
-        <button onClick={() => go("hero")} className="flex items-center gap-2.5 cursor-pointer group">
+        <a href="#hero" className="flex items-center gap-2.5 group">
           <img
             src="./icon-192.png"
             alt="OpenChanger"
@@ -75,36 +69,35 @@ export default function Navbar() {
           <span className="font-display text-sm md:text-base font-700 tracking-wide text-white">
             OPEN<span className="text-[#9fca2b]">CHANGER</span>
           </span>
-        </button>
+        </a>
 
         {/* Desktop */}
         <div className="hidden lg:flex items-center gap-1">
           {LINKS.map((link) => (
-            <button
+            <a
               key={link.id}
-              onClick={() => go(link.id)}
-              className="px-4 py-2 text-sm text-white/50 hover:text-white rounded-full hover:bg-white/5 transition-all cursor-pointer"
+              href={`#${link.id}`}
+              className="px-4 py-2 text-sm text-white/50 hover:text-white rounded-full hover:bg-white/5 transition-all"
             >
               {link.label}
-            </button>
+            </a>
           ))}
         </div>
 
         <div className="hidden lg:flex items-center gap-3">
           <LangToggle />
-          <button
-            onClick={() => window.open(DISCORD_URL, "_blank")}
-            className="p-2.5 rounded-full text-white/50 hover:text-white hover:bg-white/5 border border-white/10 hover:border-white/25 transition-all cursor-pointer"
+          <a
+            href={DISCORD_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="p-2.5 rounded-full text-white/50 hover:text-white hover:bg-white/5 border border-white/10 hover:border-white/25 transition-all"
             aria-label="Discord"
           >
             <MessageCircle className="w-4 h-4" />
-          </button>
-          <button
-            onClick={() => go("download")}
-            className="btn-primary px-5 py-2.5 rounded-full text-sm font-semibold cursor-pointer"
-          >
+          </a>
+          <a href={RELEASE_URL} className="btn-primary px-5 py-2.5 rounded-full text-sm font-semibold">
             {t.nav.download}
-          </button>
+          </a>
         </div>
 
         {/* Mobile controls */}
@@ -124,20 +117,21 @@ export default function Navbar() {
       {mobileOpen && (
         <div className="lg:hidden bg-[#060606]/95 backdrop-blur-xl border-t border-white/[0.06] px-6 py-4">
           {LINKS.map((link) => (
-            <button
+            <a
               key={link.id}
-              onClick={() => go(link.id)}
-              className="block w-full text-left py-3 text-white/60 hover:text-white transition-colors cursor-pointer"
+              href={`#${link.id}`}
+              onClick={() => setMobileOpen(false)}
+              className="block w-full text-left py-3 text-white/60 hover:text-white transition-colors"
             >
               {link.label}
-            </button>
+            </a>
           ))}
-          <button
-            onClick={() => go("download")}
-            className="btn-primary w-full mt-2 px-5 py-3 rounded-xl text-sm font-semibold cursor-pointer"
+          <a
+            href={RELEASE_URL}
+            className="btn-primary block w-full mt-2 px-5 py-3 rounded-xl text-sm font-semibold text-center"
           >
             {t.nav.download}
-          </button>
+          </a>
         </div>
       )}
     </nav>

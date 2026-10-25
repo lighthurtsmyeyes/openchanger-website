@@ -84,11 +84,21 @@ export const ru = {
     sub: "Портативная сборка: скачай архив, распакуй — и можно пользоваться.",
     cta: "Скачать бесплатно",
     meta: "Windows 10 / 11 · x64 · без установки",
+    downloadsLabel: "скачиваний с GitHub",
+    membersLabel: "участников в Discord",
+    sourceLink: "Открытый код и все релизы — на GitHub",
   },
   footer: {
     rights: "Все права защищены.",
     disclaimer:
       "OpenChanger не аффилирован с Valve Corporation. Dota 2 является торговой маркой Valve Corporation. Программа предоставляется «как есть» — используйте на свой страх и риск.",
+    guidesTitle: "Гайды",
+    guides: [
+      "Что такое скинченжер Dota 2 и безопасно ли это",
+      "Как поменять скины в Dota 2 — гайд 2026",
+      "Все арканы Dota 2 — посмотреть в игре бесплатно",
+    ],
+    githubLink: "Исходники на GitHub",
   },
   mock: {
     nav: ["Скины", "Герои", "Инвентарь", "Настройки"],
@@ -187,11 +197,21 @@ export const en: Dict = {
     sub: "Portable build: download the archive, unzip it — and you're good to go.",
     cta: "Download for free",
     meta: "Windows 10 / 11 · x64 · portable, no install",
+    downloadsLabel: "downloads on GitHub",
+    membersLabel: "members on Discord",
+    sourceLink: "Open source, all releases on GitHub",
   },
   footer: {
     rights: "All rights reserved.",
     disclaimer:
       'OpenChanger is not affiliated with Valve Corporation. Dota 2 is a trademark of Valve Corporation. The software is provided "as is" — use it at your own risk.',
+    guidesTitle: "Guides",
+    guides: [
+      "What is a Dota 2 skin changer, and is it safe?",
+      "How to change Dota 2 skins — 2026 guide",
+      "All Dota 2 arcanas — preview them in game for free",
+    ],
+    githubLink: "Source code on GitHub",
   },
   mock: {
     nav: ["Skins", "Heroes", "Inventory", "Settings"],
