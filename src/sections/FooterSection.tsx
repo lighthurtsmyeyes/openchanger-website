@@ -1,7 +1,10 @@
 import { MessageCircle } from "lucide-react";
 import { scrollToId } from "@/components/Navbar";
+import { useI18n } from "@/i18n";
 
 export default function FooterSection() {
+  const { t } = useI18n();
+
   return (
     <footer className="relative border-t border-white/[0.06] px-5 md:px-8 py-12">
       <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8">
@@ -23,13 +26,12 @@ export default function FooterSection() {
         </div>
 
         <p className="text-xs text-white/30 text-center md:text-right">
-          &copy; {new Date().getFullYear()} OpenChanger. Все права защищены.
+          &copy; {new Date().getFullYear()} OpenChanger. {t.footer.rights}
         </p>
       </div>
 
       <p className="max-w-6xl mx-auto mt-8 text-center md:text-left text-[11px] leading-relaxed text-white/20">
-        OpenChanger не аффилирован с Valve Corporation. Dota 2 является торговой маркой Valve Corporation.
-        Программа предоставляется «как есть» — используйте на свой страх и риск.
+        {t.footer.disclaimer}
       </p>
     </footer>
   );

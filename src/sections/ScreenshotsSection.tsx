@@ -2,12 +2,9 @@ import { useState, useEffect, useCallback } from "react";
 import { createPortal } from "react-dom";
 import { ImageIcon, X, ChevronLeft, ChevronRight, Maximize2 } from "lucide-react";
 import Reveal from "@/components/Reveal";
+import { useI18n } from "@/i18n";
 
-const SHOTS = [
-  { src: "./menu.png", label: "Главный экран" },
-  { src: "./screenshot-2.png", label: "Выбор скинов" },
-  { src: "./screenshot-3.png", label: "Патчинг" },
-];
+const SHOT_SRCS = ["./menu.png", "./screenshot-2.png", "./screenshot-3.png"];
 
 function Screenshot({
   src,
@@ -56,6 +53,9 @@ function Lightbox({
   onClose: () => void;
   onNav: (delta: 1 | -1) => void;
 }) {
+  const { t } = useI18n();
+  const label = t.shots.labels[index];
+
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") onClose();
@@ -70,16 +70,14 @@ function Lightbox({
     };
   }, [onClose, onNav]);
 
-  const shot = SHOTS[index];
-
   return createPortal(
-    <div className="fixed inset-0 z-[80] flex items-center justify-center" role="dialog" aria-modal="true" aria-label={shot.label}>
+    <div className="fixed inset-0 z-[80] flex items-center justify-center" role="dialog" aria-modal="true" aria-label={label}>
       <div className="lightbox-fade absolute inset-0 bg-[#030303]/95 backdrop-blur-sm" onClick={onClose} />
 
       <button
         onClick={onClose}
         className="absolute top-5 right-5 z-10 p-2.5 rounded-full glass text-white/60 hover:text-white transition-colors cursor-pointer"
-        aria-label="Закрыть"
+        aria-label={t.shots.close}
       >
         <X className="w-5 h-5" />
       </button>
@@ -87,28 +85,28 @@ function Lightbox({
       <button
         onClick={() => onNav(-1)}
         className="absolute left-3 md:left-6 top-1/2 -translate-y-1/2 z-10 p-3 rounded-full glass text-white/60 hover:text-white hover:bg-white/10 transition-colors cursor-pointer"
-        aria-label="Предыдущий скриншот"
+        aria-label={t.shots.prev}
       >
         <ChevronLeft className="w-6 h-6" />
       </button>
       <button
         onClick={() => onNav(1)}
         className="absolute right-3 md:right-6 top-1/2 -translate-y-1/2 z-10 p-3 rounded-full glass text-white/60 hover:text-white hover:bg-white/10 transition-colors cursor-pointer"
-        aria-label="Следующий скриншот"
+        aria-label={t.shots.next}
       >
         <ChevronRight className="w-6 h-6" />
       </button>
 
       <figure className="lightbox-zoom relative z-[5] w-full max-w-6xl px-14 md:px-20">
         <img
-          src={shot.src}
-          alt={shot.label}
+          src={SHOT_SRCS[index]}
+          alt={label}
           className="w-full max-h-[82vh] object-contain rounded-xl border border-white/10 shadow-[0_40px_120px_-30px_rgba(0,0,0,0.9)]"
         />
         <figcaption className="mt-4 flex items-center justify-center gap-3 font-mono2 text-xs text-white/40">
-          <span>{shot.label}</span>
+          <span>{label}</span>
           <span className="text-white/20">
-            {index + 1} / {SHOTS.length}
+            {index + 1} / {SHOT_SRCS.length}
           </span>
         </figcaption>
       </figure>
@@ -118,28 +116,30 @@ function Lightbox({
 }
 
 export default function ScreenshotsSection() {
+  const { t } = useI18n();
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   const close = useCallback(() => setOpenIndex(null), []);
   const nav = useCallback((delta: 1 | -1) => {
-    setOpenIndex((cur) => (cur === null ? cur : (cur + delta + SHOTS.length) % SHOTS.length));
+    setOpenIndex((cur) => (cur === null ? cur : (cur + delta + SHOT_SRCS.length) % SHOT_SRCS.length));
   }, []);
 
   return (
     <section id="screenshots" className="relative py-20 md:py-28 px-5 md:px-8">
       <div className="max-w-6xl mx-auto">
         <Reveal className="text-center mb-14">
-          <p className="font-mono2 text-xs uppercase tracking-[0.3em] text-[#9fca2b] mb-4">// скриншоты</p>
+          <p className="font-mono2 text-xs uppercase tracking-[0.3em] text-[#9fca2b] mb-4">{t.shots.kicker}</p>
           <h2 className="font-display font-800 text-3xl md:text-4xl text-white leading-tight">
-            Как это <span className="text-gradient">выглядит</span>
+            {t.shots.title1}
+            <span className="text-gradient">{t.shots.title2}</span>
           </h2>
-          <p className="mt-4 text-sm text-white/40">Нажми на скриншот, чтобы рассмотреть</p>
+          <p className="mt-4 text-sm text-white/40">{t.shots.hint}</p>
         </Reveal>
 
         <div className="grid md:grid-cols-3 gap-4">
-          {SHOTS.map((shot, i) => (
-            <Reveal key={shot.src} delay={i * 100}>
-              <Screenshot {...shot} onOpen={() => setOpenIndex(i)} />
+          {SHOT_SRCS.map((src, i) => (
+            <Reveal key={src} delay={i * 100}>
+              <Screenshot src={src} label={t.shots.labels[i]} onOpen={() => setOpenIndex(i)} />
             </Reveal>
           ))}
         </div>

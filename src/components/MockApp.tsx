@@ -1,4 +1,5 @@
 import { Search, LayoutGrid, Swords, Backpack, Settings, Sparkles, Check } from "lucide-react";
+import { useI18n } from "@/i18n";
 
 const SKINS = [
   { name: "Manifold Paradox", hero: "Phantom Assassin", rarity: "Arcana", color: "from-fuchsia-600/80 to-purple-900/80", rarityColor: "text-fuchsia-300 border-fuchsia-400/30 bg-fuchsia-500/10" },
@@ -9,14 +10,11 @@ const SKINS = [
   { name: "Golden Basher", hero: "Anti-Mage", rarity: "Immortal", color: "from-yellow-500/80 to-amber-800/80", rarityColor: "text-violet-300 border-violet-400/30 bg-violet-500/10" },
 ];
 
-const NAV = [
-  { icon: LayoutGrid, label: "Скины", active: true },
-  { icon: Swords, label: "Герои", active: false },
-  { icon: Backpack, label: "Инвентарь", active: false },
-  { icon: Settings, label: "Настройки", active: false },
-];
+const NAV_ICONS = [LayoutGrid, Swords, Backpack, Settings];
 
 export default function MockApp() {
+  const { t } = useI18n();
+
   return (
     <div className="mock-window rounded-2xl overflow-hidden text-left select-none">
       {/* Title bar */}
@@ -36,23 +34,23 @@ export default function MockApp() {
       <div className="flex">
         {/* Sidebar */}
         <div className="hidden sm:flex flex-col w-36 md:w-44 shrink-0 border-r border-white/[0.06] py-4 px-2 gap-1">
-          {NAV.map((item) => (
+          {NAV_ICONS.map((Icon, i) => (
             <div
-              key={item.label}
+              key={t.mock.nav[i]}
               className={`flex items-center gap-2.5 px-3 py-2 rounded-lg text-xs font-medium transition-colors ${
-                item.active
+                i === 0
                   ? "bg-[#9fca2b]/15 text-[#d2ec6e] border border-[#9fca2b]/25"
                   : "text-white/40 hover:text-white/70 hover:bg-white/5 border border-transparent"
               }`}
             >
-              <item.icon className="w-3.5 h-3.5" />
-              {item.label}
+              <Icon className="w-3.5 h-3.5" />
+              {t.mock.nav[i]}
             </div>
           ))}
           <div className="mt-auto mx-2 p-2.5 rounded-lg bg-white/[0.03] border border-white/[0.06]">
             <div className="flex items-center gap-1.5">
               <span className="w-1.5 h-1.5 rounded-full bg-[#9fca2b] pulse-dot" />
-              <span className="text-[10px] text-white/50 font-mono2">Dota 2 запущена</span>
+              <span className="text-[10px] text-white/50 font-mono2">{t.mock.running}</span>
             </div>
           </div>
         </div>
@@ -62,13 +60,13 @@ export default function MockApp() {
           {/* Search */}
           <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-white/[0.04] border border-white/[0.07] mb-3">
             <Search className="w-3.5 h-3.5 text-white/30" />
-            <span className="text-xs text-white/30">Поиск по скинам...</span>
+            <span className="text-xs text-white/30">{t.mock.search}</span>
             <kbd className="ml-auto font-mono2 text-[9px] text-white/25 border border-white/10 rounded px-1.5 py-0.5">Ctrl+K</kbd>
           </div>
 
           {/* Filter chips */}
           <div className="flex gap-1.5 mb-4 flex-wrap">
-            {["Все", "Arcana", "Immortal", "Legendary"].map((chip, i) => (
+            {t.mock.chips.map((chip, i) => (
               <span
                 key={chip}
                 className={`text-[10px] px-2.5 py-1 rounded-full border font-medium ${
@@ -96,7 +94,7 @@ export default function MockApp() {
                   {i === 0 && (
                     <span className="absolute top-1.5 right-1.5 flex items-center gap-1 text-[8px] font-semibold bg-[#9fca2b] text-[#0a0f02] px-1.5 py-0.5 rounded-full">
                       <Check className="w-2 h-2" />
-                      Активен
+                      {t.mock.active}
                     </span>
                   )}
                 </div>

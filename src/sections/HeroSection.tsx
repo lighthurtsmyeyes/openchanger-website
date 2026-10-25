@@ -1,14 +1,11 @@
 import { Download, ChevronDown } from "lucide-react";
 import MockApp from "@/components/MockApp";
 import { scrollToId } from "@/components/Navbar";
-
-const STATS = [
-  { value: "12 000+", label: "скинов" },
-  { value: "125", label: "героев" },
-  { value: "0 ₽", label: "навсегда" },
-];
+import { useI18n } from "@/i18n";
 
 export default function HeroSection() {
+  const { t } = useI18n();
+
   return (
     <section
       id="hero"
@@ -26,10 +23,10 @@ export default function HeroSection() {
         <div className="text-center lg:text-left">
           <h1 className="font-display font-900 leading-[1.05] tracking-tight text-4xl sm:text-5xl md:text-6xl xl:text-[4.4rem]">
             <span className="hero-anim block text-white text-glow" style={{ animationDelay: "0ms" }}>
-              Все скины Dota 2.
+              {t.hero.title1}
             </span>
             <span className="hero-anim block text-gradient text-glow" style={{ animationDelay: "120ms" }}>
-              Бесплатно.
+              {t.hero.title2}
             </span>
           </h1>
 
@@ -37,7 +34,7 @@ export default function HeroSection() {
             className="hero-anim mt-6 text-base md:text-lg text-white/50 max-w-md mx-auto lg:mx-0 leading-relaxed font-light"
             style={{ animationDelay: "240ms" }}
           >
-            Скин-чейнджер для Dota 2: выбрал скин, применил — и играешь с ним.
+            {t.hero.sub}
           </p>
 
           <div className="hero-anim mt-9 flex justify-center lg:justify-start" style={{ animationDelay: "360ms" }}>
@@ -46,7 +43,7 @@ export default function HeroSection() {
               className="btn-primary flex items-center gap-2.5 px-9 py-4 rounded-full font-semibold cursor-pointer"
             >
               <Download className="w-5 h-5" />
-              Скачать бесплатно
+              {t.hero.cta}
             </button>
           </div>
 
@@ -54,7 +51,7 @@ export default function HeroSection() {
             className="hero-anim flex gap-10 mt-12 justify-center lg:justify-start"
             style={{ animationDelay: "480ms" }}
           >
-            {STATS.map((stat) => (
+            {t.hero.stats.map((stat) => (
               <div key={stat.label} className="flex flex-col">
                 <span className="font-display text-2xl md:text-3xl font-800 text-white">
                   {stat.value}
@@ -81,9 +78,9 @@ export default function HeroSection() {
       <button
         onClick={() => scrollToId("how")}
         className="absolute bottom-7 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/30 hover:text-white/70 transition-colors cursor-pointer"
-        aria-label="Листай вниз"
+        aria-label={t.hero.scrollAria}
       >
-        <span className="font-mono2 text-[10px] uppercase tracking-[0.25em]">листай</span>
+        <span className="font-mono2 text-[10px] uppercase tracking-[0.25em]">{t.hero.scroll}</span>
         <ChevronDown className="w-5 h-5 scroll-hint-dot" />
       </button>
     </section>

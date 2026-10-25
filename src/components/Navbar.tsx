@@ -1,21 +1,49 @@
 import { useState, useEffect } from "react";
 import { Menu, X, MessageCircle } from "lucide-react";
+import { useI18n, type Lang } from "@/i18n";
 
 const DISCORD_URL = "https://discord.gg/invite/PHWW2QDJJN";
 
-const LINKS = [
-  { label: "Как работает", id: "how" },
-  { label: "Скриншоты", id: "screenshots" },
-  { label: "FAQ", id: "faq" },
-];
+const LANGS: Lang[] = ["ru", "en"];
+
+function LangToggle() {
+  const { lang, setLang, t } = useI18n();
+  return (
+    <div
+      className="flex items-center rounded-full border border-white/10 p-0.5"
+      role="group"
+      aria-label={t.nav.language}
+    >
+      {LANGS.map((l) => (
+        <button
+          key={l}
+          onClick={() => setLang(l)}
+          aria-pressed={lang === l}
+          className={`px-2.5 py-1 rounded-full font-mono2 text-[10px] font-semibold uppercase tracking-wider transition-all cursor-pointer ${
+            lang === l ? "bg-[#9fca2b]/20 text-[#d2ec6e]" : "text-white/40 hover:text-white/80"
+          }`}
+        >
+          {l}
+        </button>
+      ))}
+    </div>
+  );
+}
 
 export function scrollToId(id: string) {
   document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
 }
 
 export default function Navbar() {
+  const { t } = useI18n();
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+
+  const LINKS = [
+    { label: t.nav.how, id: "how" },
+    { label: t.nav.screenshots, id: "screenshots" },
+    { label: t.nav.faq, id: "faq" },
+  ];
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 30);
@@ -63,6 +91,7 @@ export default function Navbar() {
         </div>
 
         <div className="hidden lg:flex items-center gap-3">
+          <LangToggle />
           <button
             onClick={() => window.open(DISCORD_URL, "_blank")}
             className="p-2.5 rounded-full text-white/50 hover:text-white hover:bg-white/5 border border-white/10 hover:border-white/25 transition-all cursor-pointer"
@@ -74,18 +103,21 @@ export default function Navbar() {
             onClick={() => go("download")}
             className="btn-primary px-5 py-2.5 rounded-full text-sm font-semibold cursor-pointer"
           >
-            Скачать
+            {t.nav.download}
           </button>
         </div>
 
-        {/* Mobile toggle */}
-        <button
-          onClick={() => setMobileOpen(!mobileOpen)}
-          className="lg:hidden text-white/80 p-2 cursor-pointer"
-          aria-label="Меню"
-        >
-          {mobileOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-        </button>
+        {/* Mobile controls */}
+        <div className="lg:hidden flex items-center gap-3">
+          <LangToggle />
+          <button
+            onClick={() => setMobileOpen(!mobileOpen)}
+            className="text-white/80 p-2 cursor-pointer"
+            aria-label={t.nav.menu}
+          >
+            {mobileOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          </button>
+        </div>
       </div>
 
       {/* Mobile menu */}
@@ -104,7 +136,7 @@ export default function Navbar() {
             onClick={() => go("download")}
             className="btn-primary w-full mt-2 px-5 py-3 rounded-xl text-sm font-semibold cursor-pointer"
           >
-            Скачать
+            {t.nav.download}
           </button>
         </div>
       )}

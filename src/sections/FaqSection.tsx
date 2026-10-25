@@ -1,45 +1,25 @@
 import { useState } from "react";
 import { Plus } from "lucide-react";
 import Reveal from "@/components/Reveal";
-
-const FAQS = [
-  {
-    q: "Это правда бесплатно?",
-    a: "Да, полностью. Никаких подписок, скрытых платежей, премиум-версий и рекламы. Сейчас — и навсегда.",
-  },
-  {
-    q: "Скины видят другие игроки?",
-    a: "Нет. Скины применяются только на твоём клиенте — остальные игроки видят стандартные модели. Это твой личный визуальный кайф.",
-  },
-  {
-    q: "За это могут забанить?",
-    a: "Нет. Способу замены скинов через VPK уже около 9 лет, и за всё это время не было зафиксировано ни одного бана. Сервер про твои скины ничего не знает.",
-  },
-  {
-    q: "Работает ли после обновлений Dota 2?",
-    a: "Да. Мы следим за патчами и выпускаем обновления OpenChanger сразу после крупных апдейтов игры. Обычно всё чинится в считанные дни.",
-  },
-  {
-    q: "Нашёл баг или есть идея. Куда писать?",
-    a: "Залетай в наш Discord — там быстро отвечаем и поможем с любым вопросом.",
-  },
-];
+import { useI18n } from "@/i18n";
 
 export default function FaqSection() {
+  const { t } = useI18n();
   const [open, setOpen] = useState<number | null>(0);
 
   return (
     <section id="faq" className="relative py-20 md:py-28 px-5 md:px-8">
       <div className="max-w-3xl mx-auto">
         <Reveal className="text-center mb-12">
-          <p className="font-mono2 text-xs uppercase tracking-[0.3em] text-[#9fca2b] mb-4">// faq</p>
+          <p className="font-mono2 text-xs uppercase tracking-[0.3em] text-[#9fca2b] mb-4">{t.faq.kicker}</p>
           <h2 className="font-display font-800 text-3xl md:text-4xl text-white leading-tight">
-            Частые <span className="text-gradient">вопросы</span>
+            {t.faq.title1}
+            <span className="text-gradient">{t.faq.title2}</span>
           </h2>
         </Reveal>
 
         <div className="flex flex-col gap-3">
-          {FAQS.map((item, i) => {
+          {t.faq.items.map((item, i) => {
             const isOpen = open === i;
             return (
               <Reveal key={item.q} delay={i * 70}>
