@@ -82,6 +82,12 @@ export default function Navbar() {
               {link.label}
             </a>
           ))}
+          <a
+            href="guides/"
+            className="px-4 py-2 text-sm text-white/50 hover:text-white rounded-full hover:bg-white/5 transition-all"
+          >
+            {t.nav.guides}
+          </a>
         </div>
 
         <div className="hidden lg:flex items-center gap-3">
@@ -126,6 +132,13 @@ export default function Navbar() {
               {link.label}
             </a>
           ))}
+          <a
+            href="guides/"
+            onClick={() => setMobileOpen(false)}
+            className="block w-full text-left py-3 text-white/60 hover:text-white transition-colors"
+          >
+            {t.nav.guides}
+          </a>
           <a
             href={RELEASE_URL}
             className="btn-primary block w-full mt-2 px-5 py-3 rounded-xl text-sm font-semibold text-center"

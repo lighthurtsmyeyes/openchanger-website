@@ -16,6 +16,7 @@ export const DISCORD_URL = "https://discord.gg/invite/PHWW2QDJJN";
 
 /** Guide pages are static HTML shipped from public/guides/. */
 export const GUIDES = {
+  home: "guides/",
   skinChanger: "guides/skin-changer-dota-2.html",
   howToChange: "guides/kak-pomenyat-skiny-dota-2.html",
   arcana: "guides/arcany-dota-2.html",

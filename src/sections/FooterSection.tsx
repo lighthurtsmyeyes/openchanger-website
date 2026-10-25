@@ -44,9 +44,12 @@ export default function FooterSection() {
 
       {/* SEO link hub: guide pages + repo, real <a> links for crawlers */}
       <nav className="max-w-6xl mx-auto mt-8" aria-label={t.footer.guidesTitle}>
-        <p className="font-mono2 text-[10px] uppercase tracking-[0.25em] text-white/30 mb-3 text-center">
+        <a
+          href={GUIDES.home}
+          className="block font-mono2 text-[10px] uppercase tracking-[0.25em] text-white/30 hover:text-white/60 transition-colors mb-3 text-center"
+        >
           {t.footer.guidesTitle}
-        </p>
+        </a>
         <ul className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm text-white/40">
           {t.footer.guides.map((label, i) => (
             <li key={label}>
