@@ -8,7 +8,7 @@
 [![Stars](https://img.shields.io/github/stars/lighthurtsmyeyes/openchanger-website?label=%D0%B7%D0%B2%D1%91%D0%B7%D0%B4&color=9fca2b)](https://github.com/lighthurtsmyeyes/openchanger-website/stargazers)
 [![Release](https://img.shields.io/github/v/release/lighthurtsmyeyes/openchanger-website?label=%D0%B2%D0%B5%D1%80%D1%81%D0%B8%D1%8F&color=9fca2b)](https://github.com/lighthurtsmyeyes/openchanger-website/releases)
 
-[🌐 Сайт](https://lighthurtsmyeyes.github.io/openchanger-website/) · [⬇️ Скачать](https://github.com/lighthurtsmyeyes/openchanger-website/releases/download/Release/OpenChanger-x64-Windows.zip) · [💬 Discord](https://discord.gg/invite/PHWW2QDJJN)
+[🌐 Сайт](https://lighthurtsmyeyes.github.io/openchanger-website/) · [⬇️ Скачать](https://github.com/lighthurtsmyeyes/openchanger-website/releases/latest/download/OpenChanger-x64-Windows.zip) · [💬 Discord](https://discord.gg/invite/PHWW2QDJJN)
 
 </div>
 
@@ -20,7 +20,7 @@
 
 ### Как это работает
 
-1. **Скачай** — один портативный архив, без установщика: [последний релиз](https://github.com/lighthurtsmyeyes/openchanger-website/releases/download/Release/OpenChanger-x64-Windows.zip).
+1. **Скачай** — один портативный архив, без установщика: [последний релиз](https://github.com/lighthurtsmyeyes/openchanger-website/releases/latest/download/OpenChanger-x64-Windows.zip).
 2. **Выбери скины** — поиск по герою, фильтры по редкости.
 3. **Build** — программа соберёт пак из выбранных скинов.
 4. **Patch** — пропатчит клиент Dota 2.
@@ -61,7 +61,7 @@ A free, open-source Dota 2 skin changer: 12,000+ skins for all 125 heroes — ar
 
 ### How it works
 
-1. **Download** — a single portable archive, no installer: [latest release](https://github.com/lighthurtsmyeyes/openchanger-website/releases/download/Release/OpenChanger-x64-Windows.zip).
+1. **Download** — a single portable archive, no installer: [latest release](https://github.com/lighthurtsmyeyes/openchanger-website/releases/latest/download/OpenChanger-x64-Windows.zip).
 2. **Pick your skins** — search by hero, filter by rarity.
 3. **Build** — the app packs your selection.
 4. **Patch** — it patches the Dota 2 client.
